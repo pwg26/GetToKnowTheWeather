@@ -24,18 +24,22 @@
                 <div class="row">
                     <div class="col-sm-6 mt-4 mb-2 bg-white rounded">
                         <div class="mb-3">
-                            <label for="exampleFormControlInput1" class="form-label">city search</label>
-                            <input type="" class="form-control" id="exampleFormControlInput1" placeholder="city" />
+
+                            <label for="search">Add a Todo: </label>
+                            <input value="" type="text" placeholder="city" name="search-text" id="search" />
+                            <button class="save">Save</button>
+
                         </div>
+                        <div id="past-area"></div>
                     </div>
 
-                    <!-- link to about me-->
+                    <!-- seach area -->
 
                     <div class="col-sm-6 mt-4 mb-2 bg-white rounded">
-                        <h1 id= "city">City:</h1>
-                        <p id= "temp">temp:</p>
-                        <p id = "humidity">humidity:</p>
-                        <p id = "wind">wind:</p>
+                        <h1 class="city">City:</h1>
+                        <p class="temp">temp:</p>
+                        <p class="humidity">humidity:</p>
+                        <p class="wind">wind:</p>
                     </div>
                 </div>
             </section>
@@ -44,46 +48,120 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script type="text/javascript">
 
-        var APIKey = "166a433c57516f51dfab1f7edaed8413"
 
-        var City = "Bujumbura,Burundi"
-        
-        var queryURL =
-        "https://api.openweathermap.org/data/2.5/weather?" +
-        "q=" + City + "&appid=" +
-        APIKey;
+            var APIKey = "166a433c57516f51dfab1f7edaed8413"
 
-        $.ajax({
-        url: queryURL,
-        method: "GET",
-      })
-        // We store all of the retrieved data inside of an object called "response"
-        .then(function (response) {
-          // Log the queryURL
-          console.log(queryURL);
+            var City = "Bridgewater,NewJersey"
 
-          // Log the resulting object
-          console.log(response);
+            var queryURL =
+                "https://api.openweathermap.org/data/2.5/weather?" +
+                "q=" + City + "&appid=" +
+                APIKey;
 
-          // Transfer content to HTML
-          $("#city").html("<h1>" + response.name + " Weather Details</h1>");
+            $.ajax({
+                url: queryURL,
+                method: "GET",
+            })
+                // We store all of the retrieved data inside of an object called "response"
+                .then(function (response) {
+                    // Log the queryURL
+                    console.log(queryURL);
 
-          $("#wind").text("Wind Speed: " + response.wind.speed);
+                    // Log the resulting object
+                    console.log(response);
 
-          $("#humidity").text("Humidity: " + response.main.humidity);
+                    // Transfer content to HTML
+                    $(".city").html(response.name);
 
-          // Convert the temp to fahrenheit  PEMDAS
-          var tempF = (response.main.temp - 273.15) * 1.8 + 32;
+                    $(".wind").text("Wind Speed: " + response.wind.speed);
 
-          // add temp content to html
-          $("#temp").text("Temperature (K) " + response.main.temp);
-          $("#tempF").text("Temperature (F) " + tempF.toFixed(2));
+                    $(".humidity").text("Humidity: " + response.main.humidity);
 
-          // Log the data in the console as well
-          console.log("Wind Speed: " + response.wind.speed);
-          console.log("Humidity: " + response.main.humidity);
-          console.log("Temperature (F): " + tempF);
-        });
+                    // Convert the temp to fahrenheit  PEMDAS
+                    var tempF = (response.main.temp - 273.15) * 1.8 + 32;
+
+                    // add temp content to html
+                    $(".temp").text("Temperature (K) " + response.main.temp);
+                    $(".tempF").text("Temperature (F) " + tempF.toFixed(2));
+
+                    // Log the data in the console as well
+                    console.log("Wind Speed: " + response.wind.speed);
+                    console.log("Humidity: " + response.main.humidity);
+                    console.log("Temperature (F): " + tempF);
+
+
+
+
+                })
+
+
+
+
+            function initPast() {
+                if (Object.entries(localStorage).length > 0) {
+                    for (x = 1; x < (Object.entries(localStorage).length + 1); x++) {
+                        var Addedsearches = $("<div>")
+                        
+                        if(Addedsearches.text() === localStorage.getItem([x])){
+                            continue;
+                        }
+                        Addedsearches = $("<div>").text(localStorage.getItem([x]));
+                        
+                        $("#past-area").prepend(Addedsearches);
+                    }
+                }
+            }
+            initPast()
+
+            pastSearches = []
+            $(".save").on("click", function (event) {
+                var CityName = $("#search").val();
+                pastSearches.push(CityName);
+                localStorage.setItem((Object.entries(localStorage).length + 1), CityName);
+                pastSearches.shift();
+                initPast()
+            })
+            
+
+            console.log(Object.entries(localStorage).length)
+
+            // for (x = 1; x < pastSearches.length; x++) {
+            //     var Addedsearches = $("<div>").text(localStorage.getItem(x));
+            //     $("#past-area").prepend(Addedsearches)
+            // };
+            //     for (x = 1; x < pastSearches.length; x++) {
+            //         var Addedsearches = $("<div>").text(localStorage.getItem(x));
+            //         $("#past-area").prepend(Addedsearches)
+
+
+
+            //     };
+            // }
+            // appendPastSearch() 
+
+
+
+
+
+            // function storeCity() {
+            //     // TODO: Describe the purpose of the following line of code.
+            //     localStorage.setItem("city:", cityText);
+            // }
+            // // TODO: Describe the purpose of the following line of code.
+            // $("#search").on("submit", function(event) {
+            //     event.preventDefault();
+            //     var cityText = $("#search").value.trim();
+            //     // TODO: Describe the functionality of the following `if` statement.
+            //     if (cityText === "") {
+            //         return;
+            //     }
+            //     // TODO: Describe the purpose of the following lines of code.
+
+            //     // TODO: What will happen when the following functions are called?
+            //     storeCity();
+
+            // });
+
 
 
 
