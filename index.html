@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>weatherboi</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+    <body class="backround-home d-flex flex-column h-100">
+        <main>
+            <section class="container">
+                <div class="row">
+                    <div class="col-sm-6 mt-4 mb-2 bg-white rounded">
+                        <div class="mb-3">
+                            <label for="exampleFormControlInput1" class="form-label">city search</label>
+                            <input type="" class="form-control" id="exampleFormControlInput1" placeholder="city" />
+                        </div>
+                    </div>
+
+                    <!-- link to about me-->
+
+                    <div class="col-sm-6 mt-4 mb-2 bg-white rounded">
+                        <h1 id= "city">City:</h1>
+                        <p id= "temp">temp:</p>
+                        <p id = "humidity">humidity:</p>
+                        <p id = "wind">wind:</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script type="text/javascript">
+
+        var APIKey = "166a433c57516f51dfab1f7edaed8413"
+
+        var City = "Bujumbura,Burundi"
+        
+        var queryURL =
+        "https://api.openweathermap.org/data/2.5/weather?" +
+        "q=" + City + "&appid=" +
+        APIKey;
+
+        $.ajax({
+        url: queryURL,
+        method: "GET",
+      })
+        // We store all of the retrieved data inside of an object called "response"
+        .then(function (response) {
+          // Log the queryURL
+          console.log(queryURL);
+
+          // Log the resulting object
+          console.log(response);
+
+          // Transfer content to HTML
+          $("#city").html("<h1>" + response.name + " Weather Details</h1>");
+
+          $("#wind").text("Wind Speed: " + response.wind.speed);
+
+          $("#humidity").text("Humidity: " + response.main.humidity);
+
+          // Convert the temp to fahrenheit  PEMDAS
+          var tempF = (response.main.temp - 273.15) * 1.8 + 32;
+
+          // add temp content to html
+          $("#temp").text("Temperature (K) " + response.main.temp);
+          $("#tempF").text("Temperature (F) " + tempF.toFixed(2));
+
+          // Log the data in the console as well
+          console.log("Wind Speed: " + response.wind.speed);
+          console.log("Humidity: " + response.main.humidity);
+          console.log("Temperature (F): " + tempF);
+        });
+
+
+
+        </script>
+
+    </body>
+
+
+
+</html>
