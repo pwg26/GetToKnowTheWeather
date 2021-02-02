@@ -1,8 +1,5 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+
 <html>
 
 <head>
@@ -22,24 +19,84 @@
         <main>
             <section class="container">
                 <div class="row">
-                    <div class="col-sm-6 mt-4 mb-2 bg-white rounded">
+                    <div class="col-sm-2 mt-4 mb-2 bg-white rounded">
                         <div class="mb-3">
 
                             <label>Seach City: </label>
                             <input type="text" placeholder="city" id="search" />
-                            <button id="saveBtn">Save</button>
+                            <button id="saveBtn">search</button>
 
                         </div>
-                        <div id="past-area"></div>
+
+                        <p>past searches</p>
+                        <div id="past-area" class= "d-grid gap-2"></div>
+
+
+
                     </div>
 
-                    <!-- seach area -->
 
-                    <div class="col-sm-6 mt-4 mb-2 bg-white rounded">
-                        <h1 id="city">City:</h1>
-                        <p id="tempk">temp:</p>
-                        <p id="humidity">humidity:</p>
-                        <p id="wind">wind:</p>
+
+
+
+                    <div class="col-sm-10 mt-4 mb-2 bg-white rounded ">
+                        <div class="mx-auto">
+                            <img id="icon0"></img>
+                            <h1 id="city">City:</h1>
+                            <p id="t0">temp:</p>
+                            <p id="hum0">humidity:</p>
+                            <p id="w0">wind:</p>
+                            <p id="uv0">uv</p>
+
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-2 mt-4 mb-2 bg-blue rounded">
+
+
+                                <img id="icon1"></img>
+                                <p id="t1">temp:</p>
+                                <p id="hum1">humidity:</p>
+                                <p id="w1">wind:</p>
+                                <p id="uv1">uv</p>
+
+
+                            </div>
+                            <div class="col-sm-2 mt-4 mb-2 bg-blue rounded">
+
+                                <img id="icon2"></img>
+                                <p id="t2">temp:</p>
+                                <p id="hum2">humidity:</p>
+                                <p id="w2">wind:</p>
+                                <p id="uv2">uv</p>
+
+
+                            </div>
+                            <div class="col-sm-2 mt-4 mb-2 bg-blue rounded">
+
+                                <img id="icon3"></img>
+                                <p id="t3">temp:</p>
+                                <p id="hum3">humidity:</p>
+                                <p id="w3">wind:</p>
+                                <p id="uv3">uv</p>
+                            </div>
+                            <div class="col-sm-2 mt-4 mb-2 bg-blue rounded">
+
+                                <img id="icon4"></img>
+                                <p id="t4">temp:</p>
+                                <p id="hum4">humidity:</p>
+                                <p id="w4">wind:</p>
+                                <p id="uv4">uv</p>
+                            </div>
+                            <div class="col-sm-2 mt-4 mb-2 bg-blue rounded">
+
+                                <img id="icon5"></img>
+                                <p id="t5">temp:</p>
+                                <p id="hum5">humidity:</p>
+                                <p id="w5">wind:</p>
+                                <p id="uv5">uv</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -51,91 +108,96 @@
 
 
 
+            var Locationchange = function (City) {
 
 
-
-
-
-
-
-
-
-
-
-            var Locationchange = function(City){
-
-
-
-                var APIKey = "166a433c57516f51dfab1f7edaed8413"
-
-                City = "Denver,Colorado"
+                var APIkey = "ae4507ac58b609c2c9fb59208a2055d3";
 
                 let queryURL =
-                "https://api.openweathermap.org/data/2.5/weather?" +
-                "q=" + City + "&appid=" +
-                APIKey;
+                    "https://api.openweathermap.org/data/2.5/weather?" +
+                    "q=" + City + "&appid=" +
+                    APIkey;
 
-
-            $.ajax({
-                url: queryURL,
-                method: "GET",
-            })
-                // We store all of the retrieved data inside of an object called "response"
-                .then(function (response) {
-                    // Log the queryURL
-                    console.log(queryURL);
-
-                    // Log the resulting object
-                    console.log(response);
-
-                    // Transfer content to HTML
-                    $("#city").html(response.name);
-
-                    $("#wind").text("Wind Speed: " + response.wind.speed);
-
-                    $("#humidity").text("Humidity: " + response.main.humidity);
-
-                    // Convert the temp to fahrenheit  PEMDAS
-                    var tempF = (response.main.temp - 273.15) * 1.8 + 32;
-
-                    // add temp content to html
-                    $("#tempk").text("Temperature (K) " + response.main.temp);
-                    $("#tempF").text("Temperature (F) " + tempF.toFixed(2));
-
-                    // Log the data in the console as well
-                    console.log("Wind Speed: " + response.wind.speed);
-                    console.log("Humidity: " + response.main.humidity);
-                    console.log("Temperature (F): " + tempF);
-
-
-                    // function for storing past searches
-
-
-
-
-
-
+                $.ajax({
+                    url: queryURL,
+                    method: "GET",
                 })
+                    // We store all of the retrieved data inside of an object called "response"
+                    .then(function (response) {
+                        console.log(response)
+
+
+                        var lat = response.coord.lat
+                        var lon = response.coord.lon
+
+                        var APIkey = "ae4507ac58b609c2c9fb59208a2055d3";
+
+                        let queryURL2 = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&exclude=hourly" + "&appid=" + APIkey
+
+                        
+
+                        $.ajax({
+                            url: queryURL2,
+                            method: "GET",
+                        })
+                            // We store all of the retrieved data inside of an object called "response"
+                            .then(function (response2) {
+                                
+                                // Log the resulting object
+                                console.log(response2);
+
+                                $("#city").text("City:" + response.name);
+                                $("#uv0").text("UV:" + response2.current.uvi);
+                                $("#w0").text("Index:" + response2.current.wind_speed);
+                                $("#hum0").text("Humidity:" + response2.current.humidity);
+                                $("#t0").text("Temperature(K):" + response2.current.temp);
+                                $("#icon0").attr("src", "http://openweathermap.org/img/wn/" + response2.current.weather[0].icon + ".png")
+
+                                // Transfer content to HTML
+
+                                function alldays() {
+                                    for (x = 1; x < 6; x++) {
+
+                                        $("#uv" + [x]).text("uv index: " + response2.daily[x].uvi);
+
+                                        $("#w" + [x]).text("Wind Speed: " + response2.daily[x].wind_speed);
+
+                                        $("#hum" + [x]).text("Humidity: " + response2.daily[x].humidity);
+
+                                        $("#t" + [x]).text("Temperature (K) -High: " + response2.daily[x].temp.day);
+
+                                        $("#icon" + [x]).attr("src", "http://openweathermap.org/img/wn/" + response2.daily[x].weather[0].icon + ".png")
+                                    }
+                                }
+                                alldays()
+
+
+
+                            
+
+                            })
+
+
+                    })
+                
             }
 
             function initPast() {
                 if (Object.entries(localStorage).length > 0) {
                     for (x = 1; x < (Object.entries(localStorage).length + 1); x++) {
                         var Addedsearches = $("<button>")
-
-                        if (Addedsearches.text() === localStorage.getItem([x])) {
-                            continue;
-                        }
                         Addedsearches.text(localStorage.getItem([x]));
-                        Addedsearches.addClass("prev-search")
-                        Addedsearches.attr("id", "prev-search" + [x])
+                        Addedsearches.addClass("btn btn-primary")
+                        Addedsearches.attr("id", [x] + "memory")
                         Addedsearches.attr("location", localStorage.getItem([x]))
-
+                        $(".prev-search").on("click", function () {
+                            Locationchange($(this).attr("location"))
+                        })
                         $("#past-area").prepend(Addedsearches);
                     }
                 }
             }
-            initPast()
+
 
 
 
@@ -146,7 +208,6 @@
                 pastSearches.push(userInput);
                 localStorage.setItem((Object.entries(localStorage).length + 1), userInput);
                 pastSearches.shift();
-                initPast()
                 Locationchange(userInput)
             })
 
