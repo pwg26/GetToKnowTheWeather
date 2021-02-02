@@ -25,9 +25,9 @@
                     <div class="col-sm-6 mt-4 mb-2 bg-white rounded">
                         <div class="mb-3">
 
-                            <label for="search">Add a Todo: </label>
-                            <input value="" type="text" placeholder="city" name="search-text" id="search" />
-                            <button class="save">Save</button>
+                            <label>Seach City: </label>
+                            <input type="text" placeholder="city" id="search" />
+                            <button id="saveBtn">Save</button>
 
                         </div>
                         <div id="past-area"></div>
@@ -36,10 +36,10 @@
                     <!-- seach area -->
 
                     <div class="col-sm-6 mt-4 mb-2 bg-white rounded">
-                        <h1 class="city">City:</h1>
-                        <p class="temp">temp:</p>
-                        <p class="humidity">humidity:</p>
-                        <p class="wind">wind:</p>
+                        <h1 id="city">City:</h1>
+                        <p id="tempk">temp:</p>
+                        <p id="humidity">humidity:</p>
+                        <p id="wind">wind:</p>
                     </div>
                 </div>
             </section>
@@ -49,14 +49,32 @@
         <script type="text/javascript">
 
 
-            var APIKey = "166a433c57516f51dfab1f7edaed8413"
 
-            var City = "Bridgewater,NewJersey"
 
-            var queryURL =
+
+
+
+
+
+
+
+
+
+
+
+            var Locationchange = function(City){
+
+
+
+                var APIKey = "166a433c57516f51dfab1f7edaed8413"
+
+                City = "Denver,Colorado"
+
+                let queryURL =
                 "https://api.openweathermap.org/data/2.5/weather?" +
                 "q=" + City + "&appid=" +
                 APIKey;
+
 
             $.ajax({
                 url: queryURL,
@@ -71,18 +89,18 @@
                     console.log(response);
 
                     // Transfer content to HTML
-                    $(".city").html(response.name);
+                    $("#city").html(response.name);
 
-                    $(".wind").text("Wind Speed: " + response.wind.speed);
+                    $("#wind").text("Wind Speed: " + response.wind.speed);
 
-                    $(".humidity").text("Humidity: " + response.main.humidity);
+                    $("#humidity").text("Humidity: " + response.main.humidity);
 
                     // Convert the temp to fahrenheit  PEMDAS
                     var tempF = (response.main.temp - 273.15) * 1.8 + 32;
 
                     // add temp content to html
-                    $(".temp").text("Temperature (K) " + response.main.temp);
-                    $(".tempF").text("Temperature (F) " + tempF.toFixed(2));
+                    $("#tempk").text("Temperature (K) " + response.main.temp);
+                    $("#tempF").text("Temperature (F) " + tempF.toFixed(2));
 
                     // Log the data in the console as well
                     console.log("Wind Speed: " + response.wind.speed);
@@ -90,38 +108,52 @@
                     console.log("Temperature (F): " + tempF);
 
 
+                    // function for storing past searches
+
+
+
+
 
 
                 })
-
-
-
+            }
 
             function initPast() {
                 if (Object.entries(localStorage).length > 0) {
                     for (x = 1; x < (Object.entries(localStorage).length + 1); x++) {
-                        var Addedsearches = $("<div>")
-                        
-                        if(Addedsearches.text() === localStorage.getItem([x])){
+                        var Addedsearches = $("<button>")
+
+                        if (Addedsearches.text() === localStorage.getItem([x])) {
                             continue;
                         }
-                        Addedsearches = $("<div>").text(localStorage.getItem([x]));
-                        
+                        Addedsearches.text(localStorage.getItem([x]));
+                        Addedsearches.addClass("prev-search")
+                        Addedsearches.attr("id", "prev-search" + [x])
+                        Addedsearches.attr("location", localStorage.getItem([x]))
+
                         $("#past-area").prepend(Addedsearches);
                     }
                 }
             }
             initPast()
 
+
+
             pastSearches = []
-            $(".save").on("click", function (event) {
-                var CityName = $("#search").val();
-                pastSearches.push(CityName);
-                localStorage.setItem((Object.entries(localStorage).length + 1), CityName);
+
+            $("#saveBtn").on("click", function () {
+                var userInput = $("#search").val()
+                pastSearches.push(userInput);
+                localStorage.setItem((Object.entries(localStorage).length + 1), userInput);
                 pastSearches.shift();
                 initPast()
+                Locationchange(userInput)
             })
-            
+
+
+
+
+
 
             console.log(Object.entries(localStorage).length)
 
