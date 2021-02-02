@@ -29,7 +29,7 @@
                         </div>
 
                         <p>past searches</p>
-                        <div id="past-area" class= "d-grid gap-2"></div>
+                        <div id="past-area" class="d-grid gap-2"></div>
 
 
 
@@ -134,7 +134,7 @@
 
                         let queryURL2 = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&exclude=hourly" + "&appid=" + APIkey
 
-                        
+
 
                         $.ajax({
                             url: queryURL2,
@@ -142,7 +142,7 @@
                         })
                             // We store all of the retrieved data inside of an object called "response"
                             .then(function (response2) {
-                                
+
                                 // Log the resulting object
                                 console.log(response2);
 
@@ -173,13 +173,13 @@
 
 
 
-                            
+
 
                             })
 
 
                     })
-                
+
             }
 
             function initPast() {
@@ -187,17 +187,17 @@
                     for (x = 1; x < (Object.entries(localStorage).length + 1); x++) {
                         var Addedsearches = $("<button>")
                         Addedsearches.text(localStorage.getItem([x]));
-                        Addedsearches.addClass("btn btn-primary")
+                        Addedsearches.addClass("btn btn-primary prev-search")
                         Addedsearches.attr("id", [x] + "memory")
                         Addedsearches.attr("location", localStorage.getItem([x]))
+                        $("#past-area").prepend(Addedsearches);
                         $(".prev-search").on("click", function () {
                             Locationchange($(this).attr("location"))
                         })
-                        $("#past-area").prepend(Addedsearches);
                     }
                 }
             }
-
+            initPast()
 
 
 
@@ -205,10 +205,24 @@
 
             $("#saveBtn").on("click", function () {
                 var userInput = $("#search").val()
+                if (userInput == "") {
+                    return
+                }
                 pastSearches.push(userInput);
-                localStorage.setItem((Object.entries(localStorage).length + 1), userInput);
+                Addedsearches = $("<button>")
+                Addedsearches.text(userInput)
+
+                Addedsearches.addClass("btn btn-primary prev-search")
+                Addedsearches.attr("location", userInput)
+                
+                $("#past-area").prepend(Addedsearches)
+                $(".prev-search").on("click", function () {
+                    Locationchange($(this).attr("location"))
+                })
+                localStorage.setItem((Object.entries(localStorage).length) + 1, userInput);
                 pastSearches.shift();
                 Locationchange(userInput)
+
             })
 
 
@@ -216,7 +230,7 @@
 
 
 
-            console.log(Object.entries(localStorage).length)
+
 
             // for (x = 1; x < pastSearches.length; x++) {
             //     var Addedsearches = $("<div>").text(localStorage.getItem(x));
