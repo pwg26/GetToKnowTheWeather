@@ -1,46 +1,22 @@
-# 06 Server-Side APIs: Weather Dashboard
+Get to know the weather:
 
-Developers are often tasked with retrieving data from another application's API and using it in the context of their own. Third-party APIs allow developers to access their data and functionality by making requests with specific parameters to a URL. Your challenge is to build a weather dashboard that will run in the browser and feature dynamically updated HTML and CSS.
 
-Use the [OpenWeather API](https://openweathermap.org/api) to retrieve weather data for cities. The documentation includes a section called "How to start" that will provide basic setup and usage instructions. Use `localStorage` to store any persistent data.
+Introduction:
+This repository contains a weather forecaster. It works by taking a user input for a given location, then plugging that input into a series of api ajax calls which pulls weather data to ultimately populate the content of the forecast. This forecaster also saves previous user imputes which can revert the forecaster back to those searches
 
-## User Story
+Motivation:
+Weather can either make or break someone's day. By giving one some predictability of the atmosphere, they can plan their days accordly to avoid obligations falling through or to cancel events that would be negatively impacted by the climate. A forecast of the current day as well as the coming week is a great way of accomplishing this.
 
-```
-AS A traveler
-I WANT to see the weather outlook for multiple cities
-SO THAT I can plan a trip accordingly
-```
 
-## Acceptance Criteria
+Development:
+To begin I made a skeletal html layout of exactly where I wanted the user input and content fields to be filled with weather data. Next I went to work testing how user imputes would be sent to local storage. I did this by assigning the input a key number one more then the length of the entries in local storage then setting their value to the user input itself then populating the html through DOM the user input as a button. I wrote a second function that would populate the search history field everytime the page was refreshed by using all the stored keys containing the user inputs. 
+<img src = "https://github.com/pwg26/GetToKnowTheWeather/blob/master/images/ajax.png">
 
-```
-GIVEN a weather dashboard with form inputs
-WHEN I search for a city
-THEN I am presented with current and future conditions for that city and that city is added to the search history
-WHEN I view current weather conditions for that city
-THEN I am presented with the city name, the date, an icon representation of weather conditions, the temperature, the humidity, the wind speed, and the UV index
-WHEN I view the UV index
-THEN I am presented with a color that indicates whether the conditions are favorable, moderate, or severe
-WHEN I view future weather conditions for that city
-THEN I am presented with a 5-day forecast that displays the date, an icon representation of weather conditions, the temperature, and the humidity
-WHEN I click on a city in the search history
-THEN I am again presented with current and future conditions for that city
-WHEN I open the weather dashboard
-THEN I am presented with the last searched city forecast
-```
+Next I used 2 ajax calls on 2 different openweather API’s- the first(a current weather forecast) to populate current weather content via DOM  the to pull required  latitude and longitude data from to be used for a 5 day open weather forecast. The data from the 5 day forecast was used to populate the corresponding content fields. 
+<img src = "https://github.com/pwg26/GetToKnowTheWeather/blob/master/images/localstor.png">
 
-The following image demonstrates the application functionality:
+Next I appended my two functions which generated the past search history buttons to have a click event which used the user input data to change to plug into the ajaxs to to change the forecast location. Lastly I styled the page with bootstrap and my original css.
+<img src = "https://github.com/pwg26/GetToKnowTheWeather/blob/master/images/site.png">
 
-![weather dashboard demo](./Assets/06-server-side-apis-homework-demo.png)
-
-## Review
-
-You are required to submit the following for review:
-
-* The URL of the deployed application.
-
-* The URL of the GitHub repository. Give the repository a unique name and include a README describing the project.
-
-- - -
-© 2021 Trilogy Education Services, LLC, a 2U, Inc. brand. Confidential and Proprietary. All Rights Reserved.
+Usage:
+When the user opens the page it will be set to Denver Colorado. It will have the temperature, humidity, windspeed, uv index, and an icon displayed of the weather. When the user types in the city name and country or or state name separated by a comma, that city’s weather information will be displayed. The users searches will be saved so that they will populate under the search bar as a button so that if clicked it will display with weather information of that previous search city. 
