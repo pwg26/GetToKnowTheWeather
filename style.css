@@ -3,5 +3,5 @@
 }
 
 .imgcur {
-  height: 200%;
+  min-height: 50px;
 }
