@@ -1,3 +1,7 @@
 .sf {
-  font-size: small;
+  font-size: x-small;
+}
+
+.imgcur {
+  height: 200%;
 }
