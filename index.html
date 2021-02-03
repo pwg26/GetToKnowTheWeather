@@ -209,6 +209,10 @@
                     })
 
             }
+            // setes to denver if no local storage
+            if(ocalStorage.getItem(Object.entries) ==0){
+                Locationchange("Denver")
+            }
 
             // Intializes ajaz call to last searched city
             Locationchange(localStorage.getItem(Object.entries(localStorage).length)) 
