@@ -18,6 +18,7 @@
 
     <body class="bg-primary">
 
+        <!-- containers for content -->
         <div class="bg-white block">
             <div class="page-header d-flex justify-content-center mb-2">
                 <h1>Get to Know the Weather</h1>
@@ -25,19 +26,35 @@
         </div>
         <section class="container">
             <div class="row">
-                <div class="col-sm-3 m-1 bg-white rounded p-3">
-
-                  
-
-                    <div class="d-flex mb-2">
-                        <input id = "search" placeholder="Search for City" >
-                        <button  id= "saveBtn" class="btn btn-outline-primary"> Search</button>
-                    </div>
+                <div class="col-sm-4  bg-white rounded p-3 m-2">
 
 
+                    <!-- search imput with button -->
+                    <!-- <div class="d-flex mb-2">
+                        <input id="search" placeholder="Search for City">
+                        <button id="saveBtn" class="btn btn-outline-primary"> Search</button>
+                    </div> -->
 
+                    <!-- <div class="input-group">
+                        <input type="search" class="form-control rounded"  id ="search" placeholder="City, State or Country" 
+                        <button type="button" class="btn btn-outline-primary" id="#saveBtn">search</button>
+                      </div> -->
+
+                      <div class="input-group">
+                        <input type="search" class="form-control rounded" placeholder="Search" id ="search" aria-label="Search"
+                          aria-describedby="search-addon" />
+                        <button id="#saveBtn" type="button" class="btn btn-outline-primary">search</button>
+                      </div>
+
+                      <!-- <div class="input-group">
+                        <input type="search" class="form-control rounded"  id ="search" placeholder="City, State or Country" 
+                        <button type="button" class="btn btn-outline-primary" id="#saveBtn">search</button>
+                      </div> -->
+
+
+                    <!-- search history -->
                     <div align="center">
-                        <p>History</p>
+                        <p>Search History</p>
                         <div id="past-area" class="d-grid gap-2"></div>
                     </div>
 
@@ -48,77 +65,85 @@
 
 
 
+                <!-- content for dsplaying current weather -->
+                <div class="col sm-4 bg-white rounded p-3 m-2">
+                    <div class="row ">
+                        <div class="col-sm-2 bg-white rounded p-3">
 
-                <div class="col-sm-8 m-1 bg-white rounded p-3 px-3">
-                    <div class="mx-auto">
-                        <img id="icon0"></img>
-                        <h1 id="city">City:</h1>
-                        <p id="t0">temp:</p>
-                        <p id="hum0">humidity:</p>
-                        <p id="w0">wind:</p>
-                        <p id="uv0">uv</p>
+                            <h1 class="m-0" id="city">City:</h1>
+                            <p class="m-0" id="t0">temp:</p>
+                            <p class="m-0" id="hum0">humidity:</p>
+                            <p class="m-0" id="w0">wind:</p>
+                            <p class="m-0" id="uv0">uv</p>
+                        </div>
 
+                        <div class="col-sm-2 bg-white">
+                            <img id="icon0"></img>
+
+
+                        </div>
                     </div>
 
+                    <!-- comtent for displaying 5 day forcast -->
                     <div class="row">
 
                         <div class="col sm-1 m-1">
-                            <div class="card h-100">
-                                <img id="icon1" class="card-img-top">
+                            <div class="card mw-100">
+                                <img id="icon1" class="card-img-top w-50">
                                 <div class="card-body">
-                                    <h5 id=></h5>
-                                    <p id="t1">temp:</p>
-                                    <p id="hum1">humidity:</p>
-                                    <p id="w1">wind:</p>
-                                    <p id="uv1">uv</p>
+                                    <h5 class="m-0 " id=></h5>
+                                    <p class="m-0 sf" id="t1">temp:</p>
+                                    <p class="m-0 sf" id="hum1">humidity:</p>
+                                    <p class="m-0 sf" id="w1">wind:</p>
+                                    <p class="m-0 sf" id="uv1">uv</p>
                                 </div>
                             </div>
                         </div>
                         <div class="col sm-1 m-1">
-                            <div class="card h-100">
-                                <img id="icon2" class="card-img-top">
+                            <div class="card mw-100">
+                                <img id="icon2" class="card-img-top w-50">
                                 <div class="card-body">
-                                    <h5 id=></h5>
-                                    <p id="t2">temp:</p>
-                                    <p id="hum2">humidity:</p>
-                                    <p id="w2">wind:</p>
-                                    <p id="uv2">uv</p>
+                                    <h5 class="m-0 sf" id=></h5>
+                                    <p class="m-0 sf" id="t2">temp:</p>
+                                    <p class="m-0 sf" id="hum2">humidity:</p>
+                                    <p class="m-0 sf" id="w2">wind:</p>
+                                    <p class="m-0 sf" id="uv2">uv</p>
                                 </div>
                             </div>
                         </div>
                         <div class="col sm-1 m-1">
-                            <div class="card h-100">
-                                <img id="icon3" class="card-img-top">
+                            <div class="card mw-100">
+                                <img id="icon3" class="card-img-top w-50">
                                 <div class="card-body">
                                     <h5 id=></h5>
-                                    <p id="t3">temp:</p>
-                                    <p id="hum3">humidity:</p>
-                                    <p id="w3">wind:</p>
-                                    <p id="uv3">uv</p>
+                                    <p class="m-0 sf" id="t3">temp:</p>
+                                    <p class="m-0 sf" id="hum3">humidity:</p>
+                                    <p class="m-0 sf" id="w3">wind:</p>
+                                    <p class="m-0 sf" id="uv3">uv</p>
                                 </div>
                             </div>
                         </div>
                         <div class="col sm-1 m-1">
-                            <div class="card h-100">
-                                <img id="icon4" class="card-img-top">
+                            <div class="card mw-100">
+                                <img id="icon4" class="card-img-top w-50">
                                 <div class="card-body">
                                     <h5 id=></h5>
-                                    <p id="t4">temp:</p>
-                                    <p id="hum4">humidity:</p>
-                                    <p id="w4">wind:</p>
-                                    <p id="uv4">uv</p>
+                                    <p class="m-0 sf" id="t4">temp:</p>
+                                    <p class="m-0 sf" id="hum4">humidity:</p>
+                                    <p class="m-0 sf" id="w4">wind:</p>
+                                    <p class="m-0 sf" id="uv4">uv</p>
                                 </div>
                             </div>
                         </div>
-                        <div class="col sm-1 m-1">
-                            <div class="card h-100">
-                                <img id="icon5" class="card-img-top">
-                                <div class="card-body">
+                        <div class="col sm-1 m-1 mw-100">
+                            <div class="card mw-100">
+                                <img id="icon5" class="card-img-top w-50">
+                                <div class="card-body mw-100">
                                     <h5 id=></h5>
-                                    <p id="t5">temp:</p>
-                                    <p id="hum5">humidity:</p>
-                                    <p id="w5">wind:</p>
-                                    <p id="uv5">uv</p>
+                                    <p class="m-0 sf" id="t5">temp:</p>
+                                    <p class="m-0 sf" id="hum5">humidity:</p>
+                                    <p class="m-0 sf" id="w5">wind:</p>
+                                    <p class="m-0 sf" id="uv5">uv</p>
                                 </div>
                             </div>
                         </div>
@@ -137,7 +162,8 @@
 
 
 
-
+            
+            // entire ajax used as function work with click event from user entries
             var Locationchange = function (City) {
 
 
@@ -154,7 +180,7 @@
                 })
 
                     .then(function (response) {
-                        console.log(response)
+                        
 
 
                         var lat = response.coord.lat
@@ -165,7 +191,7 @@
                         let queryURL2 = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&exclude=hourly" + "&appid=" + APIkey
 
 
-
+                        // second ajax call used with first so that lon and lat cordinates for the one could be pulled from the daily forcast
                         $.ajax({
                             url: queryURL2,
                             method: "GET",
@@ -173,7 +199,7 @@
 
                             .then(function (response2) {
 
-
+                                // DOM population of current day content
                                 console.log(response2);
 
                                 $("#city").text("City:" + response.name);
@@ -183,8 +209,8 @@
                                 $("#t0").text("Temperature(K):" + response2.current.temp);
                                 $("#icon0").attr("src", "http://openweathermap.org/img/wn/" + response2.current.weather[0].icon + ".png")
 
-                                // Transfer content to HTML
 
+                                // Dom population of 5 day forcast
                                 function alldays() {
                                     for (x = 1; x < 6; x++) {
 
@@ -212,6 +238,10 @@
 
             }
 
+            // Intializes page to denver
+            Locationchange("Denver") 
+
+            // fuction to populate search history with locally storage values everytime page is re-entered or refreshed from entries in local storage and adds click event to change imput city and run ajax call based off value with user imput
             function initPast() {
                 if (Object.entries(localStorage).length > 0) {
                     for (x = 1; x < (Object.entries(localStorage).length + 1); x++) {
@@ -231,14 +261,13 @@
 
 
 
-            pastSearches = []
-
+            // function that addes entries to local storage from user entry, populates the content with the new entry and adds event listener to run ajax call with that users entry
             $("#saveBtn").on("click", function () {
                 var userInput = $("#search").val()
                 if (userInput == "") {
                     return
                 }
-                pastSearches.push(userInput);
+               
                 Addedsearches = $("<button>")
                 Addedsearches.text(userInput)
 
@@ -250,7 +279,7 @@
                     Locationchange($(this).attr("location"))
                 })
                 localStorage.setItem((Object.entries(localStorage).length) + 1, userInput);
-                pastSearches.shift();
+                
                 Locationchange(userInput)
 
             })
