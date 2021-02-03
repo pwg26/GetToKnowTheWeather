@@ -15,91 +15,121 @@
 
 <body>
 
-    <body class="backround-home d-flex flex-column h-100">
-        <main>
-            <section class="container">
-                <div class="row">
-                    <div class="col-sm-2 mt-4 mb-2 bg-white rounded">
-                        <div class="mb-3">
 
-                            <label>Seach City: </label>
-                            <input type="text" placeholder="city" id="search" />
-                            <button id="saveBtn">search</button>
+    <body class="bg-primary">
 
-                        </div>
+        <div class="bg-white block">
+            <div class="page-header d-flex justify-content-center mb-2">
+                <h1>Get to Know the Weather</h1>
+            </div>
+        </div>
+        <section class="container">
+            <div class="row">
+                <div class="col-sm-3 m-1 bg-white rounded p-3">
 
-                        <p>past searches</p>
+                  
+
+                    <div class="d-flex mb-2">
+                        <input id = "search" placeholder="Search for City" >
+                        <button  id= "saveBtn" class="btn btn-outline-primary"> Search</button>
+                    </div>
+
+
+
+                    <div align="center">
+                        <p>History</p>
                         <div id="past-area" class="d-grid gap-2"></div>
-
-
-
                     </div>
 
 
 
-
-
-                    <div class="col-sm-10 mt-4 mb-2 bg-white rounded ">
-                        <div class="mx-auto">
-                            <img id="icon0"></img>
-                            <h1 id="city">City:</h1>
-                            <p id="t0">temp:</p>
-                            <p id="hum0">humidity:</p>
-                            <p id="w0">wind:</p>
-                            <p id="uv0">uv</p>
-
-                        </div>
-
-                        <div class="row">
-                            <div class="col-sm-2 mt-4 mb-2 bg-blue rounded">
-
-
-                                <img id="icon1"></img>
-                                <p id="t1">temp:</p>
-                                <p id="hum1">humidity:</p>
-                                <p id="w1">wind:</p>
-                                <p id="uv1">uv</p>
-
-
-                            </div>
-                            <div class="col-sm-2 mt-4 mb-2 bg-blue rounded">
-
-                                <img id="icon2"></img>
-                                <p id="t2">temp:</p>
-                                <p id="hum2">humidity:</p>
-                                <p id="w2">wind:</p>
-                                <p id="uv2">uv</p>
-
-
-                            </div>
-                            <div class="col-sm-2 mt-4 mb-2 bg-blue rounded">
-
-                                <img id="icon3"></img>
-                                <p id="t3">temp:</p>
-                                <p id="hum3">humidity:</p>
-                                <p id="w3">wind:</p>
-                                <p id="uv3">uv</p>
-                            </div>
-                            <div class="col-sm-2 mt-4 mb-2 bg-blue rounded">
-
-                                <img id="icon4"></img>
-                                <p id="t4">temp:</p>
-                                <p id="hum4">humidity:</p>
-                                <p id="w4">wind:</p>
-                                <p id="uv4">uv</p>
-                            </div>
-                            <div class="col-sm-2 mt-4 mb-2 bg-blue rounded">
-
-                                <img id="icon5"></img>
-                                <p id="t5">temp:</p>
-                                <p id="hum5">humidity:</p>
-                                <p id="w5">wind:</p>
-                                <p id="uv5">uv</p>
-                            </div>
-                        </div>
-                    </div>
                 </div>
-            </section>
+
+
+
+
+
+                <div class="col-sm-8 m-1 bg-white rounded p-3 px-3">
+                    <div class="mx-auto">
+                        <img id="icon0"></img>
+                        <h1 id="city">City:</h1>
+                        <p id="t0">temp:</p>
+                        <p id="hum0">humidity:</p>
+                        <p id="w0">wind:</p>
+                        <p id="uv0">uv</p>
+
+                    </div>
+
+                    <div class="row">
+
+                        <div class="col sm-1 m-1">
+                            <div class="card h-100">
+                                <img id="icon1" class="card-img-top">
+                                <div class="card-body">
+                                    <h5 id=></h5>
+                                    <p id="t1">temp:</p>
+                                    <p id="hum1">humidity:</p>
+                                    <p id="w1">wind:</p>
+                                    <p id="uv1">uv</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col sm-1 m-1">
+                            <div class="card h-100">
+                                <img id="icon2" class="card-img-top">
+                                <div class="card-body">
+                                    <h5 id=></h5>
+                                    <p id="t2">temp:</p>
+                                    <p id="hum2">humidity:</p>
+                                    <p id="w2">wind:</p>
+                                    <p id="uv2">uv</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col sm-1 m-1">
+                            <div class="card h-100">
+                                <img id="icon3" class="card-img-top">
+                                <div class="card-body">
+                                    <h5 id=></h5>
+                                    <p id="t3">temp:</p>
+                                    <p id="hum3">humidity:</p>
+                                    <p id="w3">wind:</p>
+                                    <p id="uv3">uv</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col sm-1 m-1">
+                            <div class="card h-100">
+                                <img id="icon4" class="card-img-top">
+                                <div class="card-body">
+                                    <h5 id=></h5>
+                                    <p id="t4">temp:</p>
+                                    <p id="hum4">humidity:</p>
+                                    <p id="w4">wind:</p>
+                                    <p id="uv4">uv</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col sm-1 m-1">
+                            <div class="card h-100">
+                                <img id="icon5" class="card-img-top">
+                                <div class="card-body">
+                                    <h5 id=></h5>
+                                    <p id="t5">temp:</p>
+                                    <p id="hum5">humidity:</p>
+                                    <p id="w5">wind:</p>
+                                    <p id="uv5">uv</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+                </div>
+        </section>
         </main>
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -122,7 +152,7 @@
                     url: queryURL,
                     method: "GET",
                 })
-                    // We store all of the retrieved data inside of an object called "response"
+
                     .then(function (response) {
                         console.log(response)
 
@@ -140,10 +170,10 @@
                             url: queryURL2,
                             method: "GET",
                         })
-                            // We store all of the retrieved data inside of an object called "response"
+
                             .then(function (response2) {
 
-                                // Log the resulting object
+
                                 console.log(response2);
 
                                 $("#city").text("City:" + response.name);
@@ -214,7 +244,7 @@
 
                 Addedsearches.addClass("btn btn-primary prev-search")
                 Addedsearches.attr("location", userInput)
-                
+
                 $("#past-area").prepend(Addedsearches)
                 $(".prev-search").on("click", function () {
                     Locationchange($(this).attr("location"))
